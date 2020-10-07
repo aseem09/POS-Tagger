@@ -23,6 +23,28 @@ def parse_data(file):
 
     return word_tags
 
+# XML file to list
+def parse_data_get_attrib(file, attrib):
+
+    # generate element tree from the XML file
+    tree = ET.parse(file)
+
+    # get access to the tree root
+    root = tree.getroot()
+
+    # create empty list to store 'word_tag'
+    word_attribs = []
+
+    # get all <w> tags in the XML file
+    for word in root.iter('w'):
+
+        # 'hw' attrib contains the word and 'c5' attrib contains the tag
+        word_attrib = word.attrib[attrib]
+
+        # add element to list
+        word_attribs.append(word_attrib)
+
+    return word_attribs
 
 # convert list to dictionary with frequencies
 def list_to_freq_dict(word_tags_list):
