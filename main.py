@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pprint
 import os
+import json
 
 pp = pprint.PrettyPrinter(indent=4)
 path = 'Train-corpus/'
@@ -21,6 +22,8 @@ for subdir, dirs, files in os.walk(path):
 
 
 word_dict = list_to_freq_dict(word_list)
+with open('words.json', 'w') as outfile:
+    json.dump(word_dict, outfile, indent=4)
 k1 = Counter(word_dict)
 top_words = k1.most_common(10)
 print('Top 10 Words are: ')
@@ -36,6 +39,8 @@ print('\n\n')
 
 # tag_list = parse_data_get_attrib(fileName, 'c5')
 tag_dict = list_to_freq_dict(tag_list)
+with open('tags.json', 'w') as outfile:
+    json.dump(tag_dict, outfile, indent=4)
 k1 = Counter(tag_dict)
 top_tags = k1.most_common(10)
 print('Top 10 Tags are: ')
@@ -51,5 +56,7 @@ print('\n\n')
 
 # word_tags_list = parse_data(fileName)
 word_tags_dict = list_to_freq_dict(word_tags_list)
+with open('word_tags.json', 'w') as outfile:
+    json.dump(word_tags_dict, outfile, indent=4)
 
 # pp.pprint(word_list)
