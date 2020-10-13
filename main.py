@@ -14,9 +14,12 @@ word_tags_list = []
 for subdir, dirs, files in os.walk(path):
     for file in files:
         fileName = subdir + '/' + str(file)
-        word_list.extend(parse_data_get_attrib(fileName, 'hw'))
-        tag_list.extend(parse_data_get_attrib(fileName, 'c5'))
-        word_tags_list.extend(parse_data(fileName))
+        words, tags, word_tags = parse_data(fileName)
+        word_list.extend(words)
+        tag_list.extend(tags)
+        word_tags_list.extend(word_tags)
+
+
 word_dict = list_to_freq_dict(word_list)
 k1 = Counter(word_dict)
 top_words = k1.most_common(10)
