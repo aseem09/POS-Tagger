@@ -12,18 +12,23 @@ path = 'Train-corpus/'
 word_list = []
 tag_list = []
 word_tags_list = []
+
 for subdir, dirs, files in os.walk(path):
     for file in files:
+
         fileName = subdir + '/' + str(file)
         words, tags, word_tags = parse_data(fileName)
+
         word_list.extend(words)
         tag_list.extend(tags)
         word_tags_list.extend(word_tags)
 
 
 word_dict = list_to_freq_dict(word_list)
+
 with open('words.json', 'w') as outfile:
     json.dump(word_dict, outfile, indent=4)
+
 k1 = Counter(word_dict)
 top_words = k1.most_common(10)
 print('Top 10 Words are: ')
@@ -37,10 +42,10 @@ plt.show()
 
 print('\n\n')
 
-# tag_list = parse_data_get_attrib(fileName, 'c5')
 tag_dict = list_to_freq_dict(tag_list)
 with open('tags.json', 'w') as outfile:
     json.dump(tag_dict, outfile, indent=4)
+
 k1 = Counter(tag_dict)
 top_tags = k1.most_common(10)
 print('Top 10 Tags are: ')
@@ -54,9 +59,6 @@ plt.show()
 
 print('\n\n')
 
-# word_tags_list = parse_data(fileName)
 word_tags_dict = list_to_freq_dict(word_tags_list)
 with open('word_tags.json', 'w') as outfile:
     json.dump(word_tags_dict, outfile, indent=4)
-
-# pp.pprint(word_list)
