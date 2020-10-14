@@ -27,16 +27,23 @@ def parse_data(file):
         word = w_tag.attrib['hw']
         tag = w_tag.attrib['c5']
 
-        word_tag = word + '_' + tag
-
-        # adding the word to the words list
         words.append(word)
 
-        # adding the tag to the tags list
-        tags.append(tag)
+        if '-' in tag:
+            tag1 = tag[:3]
+            tag2 = tag[4:]
+            word_tag1 = word + '_' + tag1
+            word_tag2 = word + '_' + tag2
 
-        # add element to list
-        word_tags.append(word_tag)
+            tags.append(tag1)
+            word_tags.append(word_tag1)
+            tags.append(tag2)
+            word_tags.append(word_tag2)
+
+        else:
+            word_tag = word + '_' + tag
+            tags.append(tag)
+            word_tags.append(word_tag)
 
     return (words, tags, word_tags)
 
