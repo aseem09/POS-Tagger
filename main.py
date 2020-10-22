@@ -35,9 +35,15 @@ print('Top 10 Words are: ')
 for i in top_words:
     print(i[0], " :", i[1], " ")
 
-top_words = k1.most_common(25)
 keys, values = [i[0] for i in top_words], [i[1] for i in top_words]
-plt.pie(values, labels=keys)
+fig = plt.figure()
+ax = fig.add_axes([0,0,1,1])
+ax.bar(keys,values)
+plt.show()
+
+patches, texts = plt.pie(values, labels=keys)
+plt.legend(patches, keys, loc="best")
+plt.savefig('words_chart.png')
 plt.show()
 
 print('\n\n')
@@ -52,9 +58,17 @@ print('Top 10 Tags are: ')
 for i in top_tags:
     print(i[0], " :", i[1], " ")
 
-top_tags = k1.most_common(25)
 keys, values = [i[0] for i in top_tags], [i[1] for i in top_tags]
-plt.pie(values, labels=keys)
+fig = plt.figure()
+# ax = fig.add_axes([0,0,1,1])
+ax.bar(keys,values)
+plt.show()
+
+
+
+patches, texts = plt.pie(values, labels=keys)
+plt.legend(patches, keys, loc="best")
+plt.savefig('tags_chart.png')
 plt.show()
 
 print('\n\n')
