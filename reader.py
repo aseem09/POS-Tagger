@@ -24,7 +24,7 @@ def parse_data(file):
     for w_tag in root.iter('w'):
 
         # 'hw' attrib contains the word and 'c5' attrib contains the tag
-        word = w_tag.attrib['hw']
+        word = w_tag.text.replace(" ", "")
         tag = w_tag.attrib['c5']
 
         words.append(word)
