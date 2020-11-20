@@ -37,8 +37,8 @@ for i in top_words:
 
 keys, values = [i[0] for i in top_words], [i[1] for i in top_words]
 fig = plt.figure()
-ax = fig.add_axes([0,0,1,1])
-ax.bar(keys,values)
+ax = fig.add_axes([0, 0, 1, 1])
+ax.bar(keys, values)
 plt.show()
 
 patches, texts = plt.pie(values, labels=keys)
@@ -61,9 +61,8 @@ for i in top_tags:
 keys, values = [i[0] for i in top_tags], [i[1] for i in top_tags]
 fig = plt.figure()
 # ax = fig.add_axes([0,0,1,1])
-ax.bar(keys,values)
+ax.bar(keys, values)
 plt.show()
-
 
 
 patches, texts = plt.pie(values, labels=keys)
@@ -76,3 +75,6 @@ print('\n\n')
 word_tags_dict = list_to_freq_dict(word_tags_list)
 with open('word_tags.json', 'w') as outfile:
     json.dump(word_tags_dict, outfile, indent=4)
+
+
+
